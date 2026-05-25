@@ -1,0 +1,32 @@
+Experiment: ACNNP + AMP baseline
+Date: 2026-05-25
+Branch: feature/baseline-acnnp-amp
+Model weights: baseline_acnnp_amp.pth
+Inference image: lena.bmp
+Result directory: inference_results/baseline/
+
+Training summary:
+- Device: cuda
+- Train images: 9469
+- Validation images: 3925
+- Epochs: 20
+- Optimizer: Adam
+- Scheduler: CosineAnnealingLR
+- Best validation ACNNP Triangle PSNR: 33.44 dB
+- Best epoch: 18
+
+Training terminal excerpt:
+Using device: cuda
+Train: 9469 images | Val: 3925 images
+Epoch [1/20] LR: 1.00e-03 | Train Triangle Loss: 0.001951 | Val ACNNP Triangle PSNR: 27.45 dB | Val ACNNP Triangle SSIM: 0.9922 | Val AMP Circle PSNR: 27.41 dB | Best: 27.45 dB @ epoch 1 | saved best
+Epoch [2/20] LR: 9.94e-04 | Train Triangle Loss: 0.000642 | Val ACNNP Triangle PSNR: 33.00 dB | Val ACNNP Triangle SSIM: 0.9960 | Val AMP Circle PSNR: 27.41 dB | Best: 33.00 dB @ epoch 2 | saved best
+Epoch [10/20] LR: 5.82e-04 | Train Triangle Loss: 0.000549 | Val ACNNP Triangle PSNR: 33.22 dB | Val ACNNP Triangle SSIM: 0.9960 | Val AMP Circle PSNR: 27.41 dB | Best: 33.22 dB @ epoch 10 | saved best
+Epoch [18/20] LR: 6.40e-05 | Train Triangle Loss: 0.000516 | Val ACNNP Triangle PSNR: 33.44 dB | Val ACNNP Triangle SSIM: 0.9962 | Val AMP Circle PSNR: 27.41 dB | Best: 33.44 dB @ epoch 18 | saved best
+Epoch [20/20] LR: 1.61e-05 | Train Triangle Loss: 0.000515 | Val ACNNP Triangle PSNR: 33.42 dB | Val ACNNP Triangle SSIM: 0.9962 | Val AMP Circle PSNR: 27.41 dB | Best: 33.44 dB @ epoch 18
+Best ACNNP weights saved to 'baseline_acnnp_amp.pth'
+Training complete. Use 'baseline_acnnp_amp.pth' for inference.
+
+Inference result:
+[ACNNP Circle -> Triangle] PSNR: 35.53 dB | SSIM: 0.9960
+[AMP Circle -> Circle] direction: bottom | PSNR: 30.35 dB | SSIM: 0.9866
+Results saved in inference_results/baseline/
