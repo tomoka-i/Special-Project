@@ -44,6 +44,12 @@ Baseline images are expected under [inference_results/baseline/](inference_resul
 - `circle_plus_pred_triangle.png`
 - `predicted_full_acnnp_amp.png`
 
+### Reference
+- Title: Novel asymmetric CNN-based and adaptive mean predictors for reversible
+data hiding in encrypted images
+- Authors: Ping Ping, Junyuan Huo, Bobiao Guo
+- DOI: [https://www.scribd.com/document/839141559/Novel-asymmetric-CNN-based-and-adaptive-mean-predictors-for-reversible-data-hiding-in-encrypted-image](https://www.scribd.com/document/839141559/Novel-asymmetric-CNN-based-and-adaptive-mean-predictors-for-reversible-data-hiding-in-encrypted-image)
+
 
 ## 日本語
 
