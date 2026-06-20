@@ -1,0 +1,509 @@
+(venv) PS C:\Users\ctlab\tomoka> python training.py                                                                              
+Using device: cuda
+Train: 9469 images | Val: 3925 images
+Loaded frozen ACNNP weights from 'baseline_acnnp_amp.pth'
+  train epoch 1/20 batch 50/1184 | loss 0.064718 | elapsed 0.2 min
+  train epoch 1/20 batch 100/1184 | loss 0.039374 | elapsed 0.3 min
+  train epoch 1/20 batch 150/1184 | loss 0.028228 | elapsed 0.5 min
+  train epoch 1/20 batch 200/1184 | loss 0.022439 | elapsed 0.7 min
+  train epoch 1/20 batch 250/1184 | loss 0.018821 | elapsed 0.8 min
+  train epoch 1/20 batch 300/1184 | loss 0.016372 | elapsed 1.0 min
+  train epoch 1/20 batch 350/1184 | loss 0.014572 | elapsed 1.2 min
+  train epoch 1/20 batch 400/1184 | loss 0.013214 | elapsed 1.3 min
+  train epoch 1/20 batch 450/1184 | loss 0.012120 | elapsed 1.5 min
+  train epoch 1/20 batch 500/1184 | loss 0.011243 | elapsed 1.7 min
+  train epoch 1/20 batch 550/1184 | loss 0.010502 | elapsed 1.8 min
+  train epoch 1/20 batch 600/1184 | loss 0.009888 | elapsed 2.0 min
+  train epoch 1/20 batch 650/1184 | loss 0.009367 | elapsed 2.2 min
+  train epoch 1/20 batch 700/1184 | loss 0.008936 | elapsed 2.4 min
+  train epoch 1/20 batch 750/1184 | loss 0.008553 | elapsed 2.5 min
+  train epoch 1/20 batch 800/1184 | loss 0.008209 | elapsed 2.7 min
+  train epoch 1/20 batch 850/1184 | loss 0.007911 | elapsed 2.9 min
+  train epoch 1/20 batch 900/1184 | loss 0.007649 | elapsed 3.0 min
+  train epoch 1/20 batch 950/1184 | loss 0.007398 | elapsed 3.2 min
+  train epoch 1/20 batch 1000/1184 | loss 0.007187 | elapsed 3.4 min
+  train epoch 1/20 batch 1050/1184 | loss 0.006994 | elapsed 3.5 min
+  train epoch 1/20 batch 1100/1184 | loss 0.006813 | elapsed 3.7 min
+  train epoch 1/20 batch 1150/1184 | loss 0.006642 | elapsed 3.9 min
+Epoch [1/20] LR: 1.00e-03 | Train Circle Loss: 0.006540 | Val PixelCNN Circle PSNR: 25.83 dB | Val PixelCNN Circle SSIM: 0.9778 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.4 min | Best Circle: 25.83 dB @ 
+epoch 1 | saved best
+  train epoch 2/20 batch 50/1184 | loss 0.003071 | elapsed 0.3 min
+  train epoch 2/20 batch 100/1184 | loss 0.003066 | elapsed 0.6 min
+  train epoch 2/20 batch 150/1184 | loss 0.003011 | elapsed 0.8 min
+  train epoch 2/20 batch 200/1184 | loss 0.003059 | elapsed 1.1 min
+  train epoch 2/20 batch 250/1184 | loss 0.003055 | elapsed 1.4 min
+  train epoch 2/20 batch 300/1184 | loss 0.003050 | elapsed 1.7 min
+  train epoch 2/20 batch 350/1184 | loss 0.003049 | elapsed 2.0 min
+  train epoch 2/20 batch 400/1184 | loss 0.003046 | elapsed 2.2 min
+  train epoch 2/20 batch 450/1184 | loss 0.003058 | elapsed 2.5 min
+  train epoch 2/20 batch 500/1184 | loss 0.003035 | elapsed 2.8 min
+  train epoch 2/20 batch 550/1184 | loss 0.003025 | elapsed 3.1 min
+  train epoch 2/20 batch 600/1184 | loss 0.003026 | elapsed 3.3 min
+  train epoch 2/20 batch 650/1184 | loss 0.003008 | elapsed 3.6 min
+  train epoch 2/20 batch 700/1184 | loss 0.003001 | elapsed 3.9 min
+  train epoch 2/20 batch 750/1184 | loss 0.002985 | elapsed 4.2 min
+  train epoch 2/20 batch 800/1184 | loss 0.002975 | elapsed 4.5 min
+  train epoch 2/20 batch 850/1184 | loss 0.002968 | elapsed 4.7 min
+  train epoch 2/20 batch 900/1184 | loss 0.002966 | elapsed 5.0 min
+  train epoch 2/20 batch 950/1184 | loss 0.002970 | elapsed 5.3 min
+  train epoch 2/20 batch 1000/1184 | loss 0.002975 | elapsed 5.6 min
+  train epoch 2/20 batch 1050/1184 | loss 0.002963 | elapsed 5.8 min
+  train epoch 2/20 batch 1100/1184 | loss 0.002966 | elapsed 6.1 min
+  train epoch 2/20 batch 1150/1184 | loss 0.002971 | elapsed 6.4 min
+Epoch [2/20] LR: 9.94e-04 | Train Circle Loss: 0.002968 | Val PixelCNN Circle PSNR: 25.93 dB | Val PixelCNN Circle SSIM: 0.9786 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 6.9 min | Best Circle: 25.93 dB @ epoch 
+2 | saved best
+  train epoch 3/20 batch 50/1184 | loss 0.002947 | elapsed 0.2 min
+  train epoch 3/20 batch 100/1184 | loss 0.002917 | elapsed 0.3 min
+  train epoch 3/20 batch 150/1184 | loss 0.002972 | elapsed 0.5 min
+  train epoch 3/20 batch 200/1184 | loss 0.002974 | elapsed 0.7 min
+  train epoch 3/20 batch 250/1184 | loss 0.002961 | elapsed 0.8 min
+  train epoch 3/20 batch 300/1184 | loss 0.002943 | elapsed 1.0 min
+  train epoch 3/20 batch 350/1184 | loss 0.002942 | elapsed 1.2 min
+  train epoch 3/20 batch 400/1184 | loss 0.002956 | elapsed 1.3 min
+  train epoch 3/20 batch 450/1184 | loss 0.002948 | elapsed 1.5 min
+  train epoch 3/20 batch 500/1184 | loss 0.002937 | elapsed 1.7 min
+  train epoch 3/20 batch 550/1184 | loss 0.002945 | elapsed 1.8 min
+  train epoch 3/20 batch 600/1184 | loss 0.002941 | elapsed 2.0 min
+  train epoch 3/20 batch 650/1184 | loss 0.002928 | elapsed 2.2 min
+  train epoch 3/20 batch 700/1184 | loss 0.002928 | elapsed 2.3 min
+  train epoch 3/20 batch 750/1184 | loss 0.002931 | elapsed 2.5 min
+  train epoch 3/20 batch 800/1184 | loss 0.002936 | elapsed 2.7 min
+  train epoch 3/20 batch 850/1184 | loss 0.002939 | elapsed 2.8 min
+  train epoch 3/20 batch 900/1184 | loss 0.002939 | elapsed 3.0 min
+  train epoch 3/20 batch 950/1184 | loss 0.002936 | elapsed 3.2 min
+  train epoch 3/20 batch 1000/1184 | loss 0.002937 | elapsed 3.3 min
+  train epoch 3/20 batch 1050/1184 | loss 0.002938 | elapsed 3.5 min
+  train epoch 3/20 batch 1100/1184 | loss 0.002934 | elapsed 3.7 min
+  train epoch 3/20 batch 1150/1184 | loss 0.002927 | elapsed 3.8 min
+Epoch [3/20] LR: 9.76e-04 | Train Circle Loss: 0.002930 | Val PixelCNN Circle PSNR: 25.96 dB | Val PixelCNN Circle SSIM: 0.9783 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 25.96 dB @ epoch 
+3 | saved best
+  train epoch 4/20 batch 50/1184 | loss 0.003061 | elapsed 0.2 min
+  train epoch 4/20 batch 100/1184 | loss 0.003062 | elapsed 0.3 min
+  train epoch 4/20 batch 150/1184 | loss 0.003001 | elapsed 0.5 min
+  train epoch 4/20 batch 200/1184 | loss 0.002966 | elapsed 0.7 min
+  train epoch 4/20 batch 250/1184 | loss 0.002950 | elapsed 0.8 min
+  train epoch 4/20 batch 300/1184 | loss 0.002947 | elapsed 1.0 min
+  train epoch 4/20 batch 350/1184 | loss 0.002921 | elapsed 1.2 min
+  train epoch 4/20 batch 400/1184 | loss 0.002922 | elapsed 1.3 min
+  train epoch 4/20 batch 450/1184 | loss 0.002917 | elapsed 1.5 min
+  train epoch 4/20 batch 500/1184 | loss 0.002922 | elapsed 1.7 min
+  train epoch 4/20 batch 550/1184 | loss 0.002919 | elapsed 1.8 min
+  train epoch 4/20 batch 600/1184 | loss 0.002920 | elapsed 2.0 min
+  train epoch 4/20 batch 650/1184 | loss 0.002928 | elapsed 2.2 min
+  train epoch 4/20 batch 700/1184 | loss 0.002921 | elapsed 2.3 min
+  train epoch 4/20 batch 750/1184 | loss 0.002913 | elapsed 2.5 min
+  train epoch 4/20 batch 800/1184 | loss 0.002910 | elapsed 2.7 min
+  train epoch 4/20 batch 850/1184 | loss 0.002918 | elapsed 2.8 min
+  train epoch 4/20 batch 900/1184 | loss 0.002916 | elapsed 3.0 min
+  train epoch 4/20 batch 950/1184 | loss 0.002917 | elapsed 3.2 min
+  train epoch 4/20 batch 1000/1184 | loss 0.002923 | elapsed 3.3 min
+  train epoch 4/20 batch 1050/1184 | loss 0.002928 | elapsed 3.5 min
+  train epoch 4/20 batch 1100/1184 | loss 0.002926 | elapsed 3.7 min
+  train epoch 4/20 batch 1150/1184 | loss 0.002926 | elapsed 3.8 min
+Epoch [4/20] LR: 9.46e-04 | Train Circle Loss: 0.002914 | Val PixelCNN Circle PSNR: 25.95 dB | Val PixelCNN Circle SSIM: 0.9782 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 25.96 dB @ epoch 
+3
+  train epoch 5/20 batch 50/1184 | loss 0.002903 | elapsed 0.2 min
+  train epoch 5/20 batch 100/1184 | loss 0.002866 | elapsed 0.3 min
+  train epoch 5/20 batch 150/1184 | loss 0.002917 | elapsed 0.5 min
+  train epoch 5/20 batch 200/1184 | loss 0.002955 | elapsed 0.7 min
+  train epoch 5/20 batch 250/1184 | loss 0.002923 | elapsed 0.8 min
+  train epoch 5/20 batch 300/1184 | loss 0.002919 | elapsed 1.0 min
+  train epoch 5/20 batch 350/1184 | loss 0.002914 | elapsed 1.2 min
+  train epoch 5/20 batch 400/1184 | loss 0.002918 | elapsed 1.3 min
+  train epoch 5/20 batch 450/1184 | loss 0.002932 | elapsed 1.5 min
+  train epoch 5/20 batch 500/1184 | loss 0.002920 | elapsed 1.7 min
+  train epoch 5/20 batch 550/1184 | loss 0.002927 | elapsed 1.8 min
+  train epoch 5/20 batch 600/1184 | loss 0.002927 | elapsed 2.0 min
+  train epoch 5/20 batch 650/1184 | loss 0.002930 | elapsed 2.2 min
+  train epoch 5/20 batch 700/1184 | loss 0.002928 | elapsed 2.3 min
+  train epoch 5/20 batch 750/1184 | loss 0.002928 | elapsed 2.5 min
+  train epoch 5/20 batch 800/1184 | loss 0.002931 | elapsed 2.7 min
+  train epoch 5/20 batch 850/1184 | loss 0.002933 | elapsed 2.8 min
+  train epoch 5/20 batch 900/1184 | loss 0.002924 | elapsed 3.0 min
+  train epoch 5/20 batch 950/1184 | loss 0.002927 | elapsed 3.2 min
+  train epoch 5/20 batch 1000/1184 | loss 0.002929 | elapsed 3.3 min
+  train epoch 5/20 batch 1050/1184 | loss 0.002930 | elapsed 3.5 min
+  train epoch 5/20 batch 1100/1184 | loss 0.002927 | elapsed 3.7 min
+  train epoch 5/20 batch 1150/1184 | loss 0.002927 | elapsed 3.8 min
+Epoch [5/20] LR: 9.05e-04 | Train Circle Loss: 0.002927 | Val PixelCNN Circle PSNR: 25.41 dB | Val PixelCNN Circle SSIM: 0.9776 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 25.96 dB @ epoch 
+3
+  train epoch 6/20 batch 50/1184 | loss 0.002907 | elapsed 0.2 min
+  train epoch 6/20 batch 100/1184 | loss 0.002855 | elapsed 0.3 min
+  train epoch 6/20 batch 150/1184 | loss 0.002849 | elapsed 0.5 min
+  train epoch 6/20 batch 200/1184 | loss 0.002884 | elapsed 0.7 min
+  train epoch 6/20 batch 250/1184 | loss 0.002864 | elapsed 0.8 min
+  train epoch 6/20 batch 300/1184 | loss 0.002882 | elapsed 1.0 min
+  train epoch 6/20 batch 350/1184 | loss 0.002884 | elapsed 1.2 min
+  train epoch 6/20 batch 400/1184 | loss 0.002906 | elapsed 1.3 min
+  train epoch 6/20 batch 450/1184 | loss 0.002901 | elapsed 1.5 min
+  train epoch 6/20 batch 500/1184 | loss 0.002904 | elapsed 1.7 min
+  train epoch 6/20 batch 550/1184 | loss 0.002911 | elapsed 1.8 min
+  train epoch 6/20 batch 600/1184 | loss 0.002912 | elapsed 2.0 min
+  train epoch 6/20 batch 650/1184 | loss 0.002922 | elapsed 2.2 min
+  train epoch 6/20 batch 700/1184 | loss 0.002922 | elapsed 2.3 min
+  train epoch 6/20 batch 750/1184 | loss 0.002920 | elapsed 2.5 min
+  train epoch 6/20 batch 800/1184 | loss 0.002926 | elapsed 2.7 min
+  train epoch 6/20 batch 850/1184 | loss 0.002923 | elapsed 2.8 min
+  train epoch 6/20 batch 900/1184 | loss 0.002922 | elapsed 3.0 min
+  train epoch 6/20 batch 950/1184 | loss 0.002922 | elapsed 3.2 min
+  train epoch 6/20 batch 1000/1184 | loss 0.002925 | elapsed 3.3 min
+  train epoch 6/20 batch 1050/1184 | loss 0.002920 | elapsed 3.5 min
+  train epoch 6/20 batch 1100/1184 | loss 0.002915 | elapsed 3.7 min
+  train epoch 6/20 batch 1150/1184 | loss 0.002911 | elapsed 3.8 min
+Epoch [6/20] LR: 8.55e-04 | Train Circle Loss: 0.002907 | Val PixelCNN Circle PSNR: 25.94 dB | Val PixelCNN Circle SSIM: 0.9786 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 25.96 dB @ epoch 
+3
+  train epoch 7/20 batch 50/1184 | loss 0.002744 | elapsed 0.2 min
+  train epoch 7/20 batch 100/1184 | loss 0.002814 | elapsed 0.3 min
+  train epoch 7/20 batch 150/1184 | loss 0.002852 | elapsed 0.5 min
+  train epoch 7/20 batch 200/1184 | loss 0.002873 | elapsed 0.7 min
+  train epoch 7/20 batch 250/1184 | loss 0.002884 | elapsed 0.8 min
+  train epoch 7/20 batch 300/1184 | loss 0.002889 | elapsed 1.0 min
+  train epoch 7/20 batch 350/1184 | loss 0.002898 | elapsed 1.2 min
+  train epoch 7/20 batch 400/1184 | loss 0.002915 | elapsed 1.3 min
+  train epoch 7/20 batch 450/1184 | loss 0.002899 | elapsed 1.5 min
+  train epoch 7/20 batch 500/1184 | loss 0.002905 | elapsed 1.7 min
+  train epoch 7/20 batch 550/1184 | loss 0.002907 | elapsed 1.8 min
+  train epoch 7/20 batch 600/1184 | loss 0.002904 | elapsed 2.0 min
+  train epoch 7/20 batch 650/1184 | loss 0.002895 | elapsed 2.2 min
+  train epoch 7/20 batch 700/1184 | loss 0.002904 | elapsed 2.3 min
+  train epoch 7/20 batch 750/1184 | loss 0.002901 | elapsed 2.5 min
+  train epoch 7/20 batch 800/1184 | loss 0.002899 | elapsed 2.7 min
+  train epoch 7/20 batch 850/1184 | loss 0.002900 | elapsed 2.8 min
+  train epoch 7/20 batch 900/1184 | loss 0.002894 | elapsed 3.0 min
+  train epoch 7/20 batch 950/1184 | loss 0.002894 | elapsed 3.2 min
+  train epoch 7/20 batch 1000/1184 | loss 0.002889 | elapsed 3.3 min
+  train epoch 7/20 batch 1050/1184 | loss 0.002889 | elapsed 3.5 min
+  train epoch 7/20 batch 1100/1184 | loss 0.002894 | elapsed 3.7 min
+  train epoch 7/20 batch 1150/1184 | loss 0.002891 | elapsed 3.8 min
+Epoch [7/20] LR: 7.96e-04 | Train Circle Loss: 0.002896 | Val PixelCNN Circle PSNR: 25.97 dB | Val PixelCNN Circle SSIM: 0.9787 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 25.97 dB @ epoch 
+7 | saved best
+  train epoch 8/20 batch 50/1184 | loss 0.002931 | elapsed 0.2 min
+  train epoch 8/20 batch 100/1184 | loss 0.002920 | elapsed 0.3 min
+  train epoch 8/20 batch 150/1184 | loss 0.002898 | elapsed 0.5 min
+  train epoch 8/20 batch 200/1184 | loss 0.002923 | elapsed 0.7 min
+  train epoch 8/20 batch 250/1184 | loss 0.002916 | elapsed 0.8 min
+  train epoch 8/20 batch 300/1184 | loss 0.002921 | elapsed 1.0 min
+  train epoch 8/20 batch 350/1184 | loss 0.002912 | elapsed 1.2 min
+  train epoch 8/20 batch 400/1184 | loss 0.002917 | elapsed 1.3 min
+  train epoch 8/20 batch 450/1184 | loss 0.002914 | elapsed 1.5 min
+  train epoch 8/20 batch 500/1184 | loss 0.002911 | elapsed 1.7 min
+  train epoch 8/20 batch 550/1184 | loss 0.002898 | elapsed 1.8 min
+  train epoch 8/20 batch 600/1184 | loss 0.002901 | elapsed 2.0 min
+  train epoch 8/20 batch 650/1184 | loss 0.002921 | elapsed 2.2 min
+  train epoch 8/20 batch 700/1184 | loss 0.002917 | elapsed 2.3 min
+  train epoch 8/20 batch 750/1184 | loss 0.002917 | elapsed 2.5 min
+  train epoch 8/20 batch 800/1184 | loss 0.002916 | elapsed 2.7 min
+  train epoch 8/20 batch 850/1184 | loss 0.002913 | elapsed 2.8 min
+  train epoch 8/20 batch 900/1184 | loss 0.002913 | elapsed 3.0 min
+  train epoch 8/20 batch 950/1184 | loss 0.002908 | elapsed 3.2 min
+  train epoch 8/20 batch 1000/1184 | loss 0.002904 | elapsed 3.3 min
+  train epoch 8/20 batch 1050/1184 | loss 0.002907 | elapsed 3.5 min
+  train epoch 8/20 batch 1100/1184 | loss 0.002904 | elapsed 3.7 min
+  train epoch 8/20 batch 1150/1184 | loss 0.002905 | elapsed 3.8 min
+Epoch [8/20] LR: 7.30e-04 | Train Circle Loss: 0.002904 | Val PixelCNN Circle PSNR: 25.61 dB | Val PixelCNN Circle SSIM: 0.9782 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 25.97 dB @ epoch 
+7
+  train epoch 9/20 batch 50/1184 | loss 0.002893 | elapsed 0.2 min
+  train epoch 9/20 batch 100/1184 | loss 0.002901 | elapsed 0.3 min
+  train epoch 9/20 batch 150/1184 | loss 0.002959 | elapsed 0.5 min
+  train epoch 9/20 batch 200/1184 | loss 0.002911 | elapsed 0.7 min
+  train epoch 9/20 batch 250/1184 | loss 0.002906 | elapsed 0.8 min
+  train epoch 9/20 batch 300/1184 | loss 0.002899 | elapsed 1.0 min
+  train epoch 9/20 batch 350/1184 | loss 0.002913 | elapsed 1.2 min
+  train epoch 9/20 batch 400/1184 | loss 0.002901 | elapsed 1.3 min
+  train epoch 9/20 batch 450/1184 | loss 0.002907 | elapsed 1.5 min
+  train epoch 9/20 batch 500/1184 | loss 0.002908 | elapsed 1.7 min
+  train epoch 9/20 batch 550/1184 | loss 0.002912 | elapsed 1.8 min
+  train epoch 9/20 batch 600/1184 | loss 0.002902 | elapsed 2.0 min
+  train epoch 9/20 batch 650/1184 | loss 0.002899 | elapsed 2.2 min
+  train epoch 9/20 batch 700/1184 | loss 0.002908 | elapsed 2.3 min
+  train epoch 9/20 batch 750/1184 | loss 0.002897 | elapsed 2.5 min
+  train epoch 9/20 batch 800/1184 | loss 0.002887 | elapsed 2.7 min
+  train epoch 9/20 batch 850/1184 | loss 0.002894 | elapsed 2.8 min
+  train epoch 9/20 batch 900/1184 | loss 0.002904 | elapsed 3.0 min
+  train epoch 9/20 batch 950/1184 | loss 0.002895 | elapsed 3.2 min
+  train epoch 9/20 batch 1000/1184 | loss 0.002892 | elapsed 3.3 min
+  train epoch 9/20 batch 1050/1184 | loss 0.002891 | elapsed 3.5 min
+  train epoch 9/20 batch 1100/1184 | loss 0.002891 | elapsed 3.7 min
+  train epoch 9/20 batch 1150/1184 | loss 0.002890 | elapsed 3.8 min
+Epoch [9/20] LR: 6.58e-04 | Train Circle Loss: 0.002893 | Val PixelCNN Circle PSNR: 26.02 dB | Val PixelCNN Circle SSIM: 0.9788 | Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.02 dB @ epoch 
+9 | saved best
+  train epoch 10/20 batch 50/1184 | loss 0.002834 | elapsed 0.2 min
+  train epoch 10/20 batch 100/1184 | loss 0.002945 | elapsed 0.3 min
+  train epoch 10/20 batch 150/1184 | loss 0.002937 | elapsed 0.5 min
+  train epoch 10/20 batch 200/1184 | loss 0.002936 | elapsed 0.7 min
+  train epoch 10/20 batch 250/1184 | loss 0.002924 | elapsed 0.8 min
+  train epoch 10/20 batch 300/1184 | loss 0.002935 | elapsed 1.0 min
+  train epoch 10/20 batch 350/1184 | loss 0.002920 | elapsed 1.2 min
+  train epoch 10/20 batch 400/1184 | loss 0.002915 | elapsed 1.3 min
+  train epoch 10/20 batch 450/1184 | loss 0.002902 | elapsed 1.5 min
+  train epoch 10/20 batch 500/1184 | loss 0.002889 | elapsed 1.7 min
+  train epoch 10/20 batch 550/1184 | loss 0.002873 | elapsed 1.8 min
+  train epoch 10/20 batch 600/1184 | loss 0.002876 | elapsed 2.0 min
+  train epoch 10/20 batch 650/1184 | loss 0.002881 | elapsed 2.2 min
+  train epoch 10/20 batch 700/1184 | loss 0.002878 | elapsed 2.3 min
+  train epoch 10/20 batch 750/1184 | loss 0.002881 | elapsed 2.5 min
+  train epoch 10/20 batch 800/1184 | loss 0.002887 | elapsed 2.7 min
+  train epoch 10/20 batch 850/1184 | loss 0.002891 | elapsed 2.8 min
+  train epoch 10/20 batch 900/1184 | loss 0.002892 | elapsed 3.0 min
+  train epoch 10/20 batch 950/1184 | loss 0.002888 | elapsed 3.2 min
+  train epoch 10/20 batch 1000/1184 | loss 0.002887 | elapsed 3.3 min
+  train epoch 10/20 batch 1050/1184 | loss 0.002884 | elapsed 3.5 min
+  train epoch 10/20 batch 1100/1184 | loss 0.002879 | elapsed 3.7 min
+  train epoch 10/20 batch 1150/1184 | loss 0.002878 | elapsed 3.8 min
+Epoch [10/20] LR: 5.82e-04 | Train Circle Loss: 0.002877 | Val PixelCNN Circle PSNR: 26.04 dB | Val PixelCNN Circle SSIM: 0.9789 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.04 dB @ epoch 10 | saved best
+  train epoch 11/20 batch 50/1184 | loss 0.002896 | elapsed 0.2 min
+  train epoch 11/20 batch 100/1184 | loss 0.002855 | elapsed 0.3 min
+  train epoch 11/20 batch 150/1184 | loss 0.002840 | elapsed 0.5 min
+  train epoch 11/20 batch 200/1184 | loss 0.002814 | elapsed 0.7 min
+  train epoch 11/20 batch 250/1184 | loss 0.002837 | elapsed 0.8 min
+  train epoch 11/20 batch 300/1184 | loss 0.002819 | elapsed 1.0 min
+  train epoch 11/20 batch 350/1184 | loss 0.002841 | elapsed 1.2 min
+  train epoch 11/20 batch 400/1184 | loss 0.002859 | elapsed 1.3 min
+  train epoch 11/20 batch 450/1184 | loss 0.002864 | elapsed 1.5 min
+  train epoch 11/20 batch 500/1184 | loss 0.002860 | elapsed 1.7 min
+  train epoch 11/20 batch 550/1184 | loss 0.002867 | elapsed 1.8 min
+  train epoch 11/20 batch 600/1184 | loss 0.002847 | elapsed 2.0 min
+  train epoch 11/20 batch 650/1184 | loss 0.002841 | elapsed 2.2 min
+  train epoch 11/20 batch 700/1184 | loss 0.002845 | elapsed 2.3 min
+  train epoch 11/20 batch 750/1184 | loss 0.002839 | elapsed 2.5 min
+  train epoch 11/20 batch 800/1184 | loss 0.002850 | elapsed 2.7 min
+  train epoch 11/20 batch 850/1184 | loss 0.002865 | elapsed 2.8 min
+  train epoch 11/20 batch 900/1184 | loss 0.002865 | elapsed 3.0 min
+  train epoch 11/20 batch 950/1184 | loss 0.002870 | elapsed 3.2 min
+  train epoch 11/20 batch 1000/1184 | loss 0.002871 | elapsed 3.3 min
+  train epoch 11/20 batch 1050/1184 | loss 0.002869 | elapsed 3.5 min
+  train epoch 11/20 batch 1100/1184 | loss 0.002873 | elapsed 3.7 min
+  train epoch 11/20 batch 1150/1184 | loss 0.002874 | elapsed 3.8 min
+Epoch [11/20] LR: 5.05e-04 | Train Circle Loss: 0.002875 | Val PixelCNN Circle PSNR: 26.03 dB | Val PixelCNN Circle SSIM: 0.9789 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.04 dB @ epoch 10
+  train epoch 12/20 batch 50/1184 | loss 0.002906 | elapsed 0.2 min
+  train epoch 12/20 batch 100/1184 | loss 0.002896 | elapsed 0.3 min
+  train epoch 12/20 batch 150/1184 | loss 0.002882 | elapsed 0.5 min
+  train epoch 12/20 batch 200/1184 | loss 0.002889 | elapsed 0.7 min
+  train epoch 12/20 batch 250/1184 | loss 0.002893 | elapsed 0.8 min
+  train epoch 12/20 batch 300/1184 | loss 0.002886 | elapsed 1.0 min
+  train epoch 12/20 batch 350/1184 | loss 0.002887 | elapsed 1.2 min
+  train epoch 12/20 batch 400/1184 | loss 0.002899 | elapsed 1.3 min
+  train epoch 12/20 batch 450/1184 | loss 0.002891 | elapsed 1.5 min
+  train epoch 12/20 batch 500/1184 | loss 0.002895 | elapsed 1.7 min
+  train epoch 12/20 batch 550/1184 | loss 0.002895 | elapsed 1.8 min
+  train epoch 12/20 batch 600/1184 | loss 0.002900 | elapsed 2.0 min
+  train epoch 12/20 batch 650/1184 | loss 0.002888 | elapsed 2.2 min
+  train epoch 12/20 batch 700/1184 | loss 0.002885 | elapsed 2.3 min
+  train epoch 12/20 batch 750/1184 | loss 0.002881 | elapsed 2.5 min
+  train epoch 12/20 batch 800/1184 | loss 0.002872 | elapsed 2.7 min
+  train epoch 12/20 batch 850/1184 | loss 0.002871 | elapsed 2.8 min
+  train epoch 12/20 batch 900/1184 | loss 0.002879 | elapsed 3.0 min
+  train epoch 12/20 batch 950/1184 | loss 0.002880 | elapsed 3.2 min
+  train epoch 12/20 batch 1000/1184 | loss 0.002880 | elapsed 3.3 min
+  train epoch 12/20 batch 1050/1184 | loss 0.002885 | elapsed 3.5 min
+  train epoch 12/20 batch 1100/1184 | loss 0.002880 | elapsed 3.7 min
+  train epoch 12/20 batch 1150/1184 | loss 0.002875 | elapsed 3.8 min
+Epoch [12/20] LR: 4.28e-04 | Train Circle Loss: 0.002868 | Val PixelCNN Circle PSNR: 25.81 dB | Val PixelCNN Circle SSIM: 0.9782 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.04 dB @ epoch 10
+  train epoch 13/20 batch 50/1184 | loss 0.002976 | elapsed 0.2 min
+  train epoch 13/20 batch 100/1184 | loss 0.002922 | elapsed 0.3 min
+  train epoch 13/20 batch 150/1184 | loss 0.002909 | elapsed 0.5 min
+  train epoch 13/20 batch 200/1184 | loss 0.002883 | elapsed 0.7 min
+  train epoch 13/20 batch 250/1184 | loss 0.002888 | elapsed 0.8 min
+  train epoch 13/20 batch 300/1184 | loss 0.002869 | elapsed 1.0 min
+  train epoch 13/20 batch 350/1184 | loss 0.002873 | elapsed 1.2 min
+  train epoch 13/20 batch 400/1184 | loss 0.002870 | elapsed 1.3 min
+  train epoch 13/20 batch 450/1184 | loss 0.002860 | elapsed 1.5 min
+  train epoch 13/20 batch 500/1184 | loss 0.002871 | elapsed 1.7 min
+  train epoch 13/20 batch 550/1184 | loss 0.002865 | elapsed 1.8 min
+  train epoch 13/20 batch 600/1184 | loss 0.002865 | elapsed 2.0 min
+  train epoch 13/20 batch 650/1184 | loss 0.002864 | elapsed 2.2 min
+  train epoch 13/20 batch 700/1184 | loss 0.002861 | elapsed 2.3 min
+  train epoch 13/20 batch 750/1184 | loss 0.002863 | elapsed 2.5 min
+  train epoch 13/20 batch 800/1184 | loss 0.002864 | elapsed 2.7 min
+  train epoch 13/20 batch 850/1184 | loss 0.002859 | elapsed 2.8 min
+  train epoch 13/20 batch 900/1184 | loss 0.002867 | elapsed 3.0 min
+  train epoch 13/20 batch 950/1184 | loss 0.002866 | elapsed 3.2 min
+  train epoch 13/20 batch 1000/1184 | loss 0.002869 | elapsed 3.3 min
+  train epoch 13/20 batch 1050/1184 | loss 0.002874 | elapsed 3.5 min
+  train epoch 13/20 batch 1100/1184 | loss 0.002868 | elapsed 3.7 min
+  train epoch 13/20 batch 1150/1184 | loss 0.002865 | elapsed 3.8 min
+Epoch [13/20] LR: 3.52e-04 | Train Circle Loss: 0.002866 | Val PixelCNN Circle PSNR: 26.03 dB | Val PixelCNN Circle SSIM: 0.9789 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.04 dB @ epoch 10
+  train epoch 14/20 batch 50/1184 | loss 0.002907 | elapsed 0.2 min
+  train epoch 14/20 batch 100/1184 | loss 0.002882 | elapsed 0.3 min
+  train epoch 14/20 batch 150/1184 | loss 0.002886 | elapsed 0.5 min
+  train epoch 14/20 batch 200/1184 | loss 0.002895 | elapsed 0.7 min
+  train epoch 14/20 batch 250/1184 | loss 0.002884 | elapsed 0.8 min
+  train epoch 14/20 batch 300/1184 | loss 0.002867 | elapsed 1.0 min
+  train epoch 14/20 batch 350/1184 | loss 0.002851 | elapsed 1.2 min
+  train epoch 14/20 batch 400/1184 | loss 0.002845 | elapsed 1.3 min
+  train epoch 14/20 batch 450/1184 | loss 0.002828 | elapsed 1.5 min
+  train epoch 14/20 batch 500/1184 | loss 0.002827 | elapsed 1.7 min
+  train epoch 14/20 batch 550/1184 | loss 0.002821 | elapsed 1.8 min
+  train epoch 14/20 batch 600/1184 | loss 0.002827 | elapsed 2.0 min
+  train epoch 14/20 batch 650/1184 | loss 0.002827 | elapsed 2.2 min
+  train epoch 14/20 batch 700/1184 | loss 0.002832 | elapsed 2.3 min
+  train epoch 14/20 batch 750/1184 | loss 0.002838 | elapsed 2.5 min
+  train epoch 14/20 batch 800/1184 | loss 0.002845 | elapsed 2.7 min
+  train epoch 14/20 batch 850/1184 | loss 0.002855 | elapsed 2.8 min
+  train epoch 14/20 batch 900/1184 | loss 0.002857 | elapsed 3.0 min
+  train epoch 14/20 batch 950/1184 | loss 0.002853 | elapsed 3.2 min
+  train epoch 14/20 batch 1000/1184 | loss 0.002859 | elapsed 3.3 min
+  train epoch 14/20 batch 1050/1184 | loss 0.002858 | elapsed 3.5 min
+  train epoch 14/20 batch 1100/1184 | loss 0.002859 | elapsed 3.7 min
+  train epoch 14/20 batch 1150/1184 | loss 0.002857 | elapsed 3.8 min
+Epoch [14/20] LR: 2.80e-04 | Train Circle Loss: 0.002858 | Val PixelCNN Circle PSNR: 26.03 dB | Val PixelCNN Circle SSIM: 0.9787 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.04 dB @ epoch 10
+  train epoch 15/20 batch 50/1184 | loss 0.002897 | elapsed 0.2 min
+  train epoch 15/20 batch 100/1184 | loss 0.002906 | elapsed 0.3 min
+  train epoch 15/20 batch 150/1184 | loss 0.002903 | elapsed 0.5 min
+  train epoch 15/20 batch 200/1184 | loss 0.002866 | elapsed 0.7 min
+  train epoch 15/20 batch 250/1184 | loss 0.002871 | elapsed 0.8 min
+  train epoch 15/20 batch 300/1184 | loss 0.002869 | elapsed 1.0 min
+  train epoch 15/20 batch 350/1184 | loss 0.002854 | elapsed 1.2 min
+  train epoch 15/20 batch 400/1184 | loss 0.002842 | elapsed 1.3 min
+  train epoch 15/20 batch 450/1184 | loss 0.002850 | elapsed 1.5 min
+  train epoch 15/20 batch 500/1184 | loss 0.002856 | elapsed 1.7 min
+  train epoch 15/20 batch 550/1184 | loss 0.002858 | elapsed 1.8 min
+  train epoch 15/20 batch 600/1184 | loss 0.002846 | elapsed 2.0 min
+  train epoch 15/20 batch 650/1184 | loss 0.002842 | elapsed 2.2 min
+  train epoch 15/20 batch 700/1184 | loss 0.002843 | elapsed 2.3 min
+  train epoch 15/20 batch 750/1184 | loss 0.002852 | elapsed 2.5 min
+  train epoch 15/20 batch 800/1184 | loss 0.002843 | elapsed 2.7 min
+  train epoch 15/20 batch 850/1184 | loss 0.002841 | elapsed 2.8 min
+  train epoch 15/20 batch 900/1184 | loss 0.002846 | elapsed 3.0 min
+  train epoch 15/20 batch 950/1184 | loss 0.002847 | elapsed 3.2 min
+  train epoch 15/20 batch 1000/1184 | loss 0.002850 | elapsed 3.3 min
+  train epoch 15/20 batch 1050/1184 | loss 0.002857 | elapsed 3.5 min
+  train epoch 15/20 batch 1100/1184 | loss 0.002858 | elapsed 3.7 min
+  train epoch 15/20 batch 1150/1184 | loss 0.002860 | elapsed 3.8 min
+Epoch [15/20] LR: 2.14e-04 | Train Circle Loss: 0.002856 | Val PixelCNN Circle PSNR: 26.03 dB | Val PixelCNN Circle SSIM: 0.9788 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.04 dB @ epoch 10
+  train epoch 16/20 batch 50/1184 | loss 0.002967 | elapsed 0.2 min
+  train epoch 16/20 batch 100/1184 | loss 0.002881 | elapsed 0.3 min
+  train epoch 16/20 batch 150/1184 | loss 0.002908 | elapsed 0.5 min
+  train epoch 16/20 batch 200/1184 | loss 0.002923 | elapsed 0.7 min
+  train epoch 16/20 batch 250/1184 | loss 0.002914 | elapsed 0.8 min
+  train epoch 16/20 batch 300/1184 | loss 0.002901 | elapsed 1.0 min
+  train epoch 16/20 batch 350/1184 | loss 0.002918 | elapsed 1.2 min
+  train epoch 16/20 batch 400/1184 | loss 0.002895 | elapsed 1.3 min
+  train epoch 16/20 batch 450/1184 | loss 0.002885 | elapsed 1.5 min
+  train epoch 16/20 batch 500/1184 | loss 0.002883 | elapsed 1.7 min
+  train epoch 16/20 batch 550/1184 | loss 0.002876 | elapsed 1.8 min
+  train epoch 16/20 batch 600/1184 | loss 0.002884 | elapsed 2.0 min
+  train epoch 16/20 batch 650/1184 | loss 0.002885 | elapsed 2.2 min
+  train epoch 16/20 batch 700/1184 | loss 0.002876 | elapsed 2.3 min
+  train epoch 16/20 batch 750/1184 | loss 0.002879 | elapsed 2.5 min
+  train epoch 16/20 batch 800/1184 | loss 0.002872 | elapsed 2.7 min
+  train epoch 16/20 batch 850/1184 | loss 0.002862 | elapsed 2.8 min
+  train epoch 16/20 batch 900/1184 | loss 0.002854 | elapsed 3.0 min
+  train epoch 16/20 batch 950/1184 | loss 0.002851 | elapsed 3.2 min
+  train epoch 16/20 batch 1000/1184 | loss 0.002848 | elapsed 3.3 min
+  train epoch 16/20 batch 1050/1184 | loss 0.002850 | elapsed 3.5 min
+  train epoch 16/20 batch 1100/1184 | loss 0.002848 | elapsed 3.7 min
+  train epoch 16/20 batch 1150/1184 | loss 0.002855 | elapsed 3.8 min
+Epoch [16/20] LR: 1.55e-04 | Train Circle Loss: 0.002850 | Val PixelCNN Circle PSNR: 26.04 dB | Val PixelCNN Circle SSIM: 0.9788 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.04 dB @ epoch 16 | saved best
+  train epoch 17/20 batch 50/1184 | loss 0.002814 | elapsed 0.2 min
+  train epoch 17/20 batch 100/1184 | loss 0.002775 | elapsed 0.3 min
+  train epoch 17/20 batch 150/1184 | loss 0.002808 | elapsed 0.5 min
+  train epoch 17/20 batch 200/1184 | loss 0.002832 | elapsed 0.7 min
+  train epoch 17/20 batch 250/1184 | loss 0.002846 | elapsed 0.8 min
+  train epoch 17/20 batch 300/1184 | loss 0.002848 | elapsed 1.0 min
+  train epoch 17/20 batch 350/1184 | loss 0.002841 | elapsed 1.2 min
+  train epoch 17/20 batch 400/1184 | loss 0.002824 | elapsed 1.3 min
+  train epoch 17/20 batch 450/1184 | loss 0.002833 | elapsed 1.5 min
+  train epoch 17/20 batch 500/1184 | loss 0.002829 | elapsed 1.7 min
+  train epoch 17/20 batch 550/1184 | loss 0.002827 | elapsed 1.8 min
+  train epoch 17/20 batch 600/1184 | loss 0.002829 | elapsed 2.0 min
+  train epoch 17/20 batch 650/1184 | loss 0.002825 | elapsed 2.2 min
+  train epoch 17/20 batch 700/1184 | loss 0.002821 | elapsed 2.3 min
+  train epoch 17/20 batch 750/1184 | loss 0.002829 | elapsed 2.5 min
+  train epoch 17/20 batch 800/1184 | loss 0.002836 | elapsed 2.7 min
+  train epoch 17/20 batch 850/1184 | loss 0.002834 | elapsed 2.8 min
+  train epoch 17/20 batch 900/1184 | loss 0.002839 | elapsed 3.0 min
+  train epoch 17/20 batch 950/1184 | loss 0.002848 | elapsed 3.2 min
+  train epoch 17/20 batch 1000/1184 | loss 0.002844 | elapsed 3.3 min
+  train epoch 17/20 batch 1050/1184 | loss 0.002839 | elapsed 3.5 min
+  train epoch 17/20 batch 1100/1184 | loss 0.002841 | elapsed 3.7 min
+  train epoch 17/20 batch 1150/1184 | loss 0.002844 | elapsed 3.8 min
+Epoch [17/20] LR: 1.05e-04 | Train Circle Loss: 0.002848 | Val PixelCNN Circle PSNR: 26.06 dB | Val PixelCNN Circle SSIM: 0.9790 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.06 dB @ epoch 17 | saved best
+  train epoch 18/20 batch 50/1184 | loss 0.002820 | elapsed 0.2 min
+  train epoch 18/20 batch 100/1184 | loss 0.002832 | elapsed 0.3 min
+  train epoch 18/20 batch 150/1184 | loss 0.002838 | elapsed 0.5 min
+  train epoch 18/20 batch 200/1184 | loss 0.002836 | elapsed 0.7 min
+  train epoch 18/20 batch 250/1184 | loss 0.002840 | elapsed 0.8 min
+  train epoch 18/20 batch 300/1184 | loss 0.002856 | elapsed 1.0 min
+  train epoch 18/20 batch 350/1184 | loss 0.002865 | elapsed 1.2 min
+  train epoch 18/20 batch 400/1184 | loss 0.002864 | elapsed 1.3 min
+  train epoch 18/20 batch 450/1184 | loss 0.002861 | elapsed 1.5 min
+  train epoch 18/20 batch 500/1184 | loss 0.002851 | elapsed 1.7 min
+  train epoch 18/20 batch 550/1184 | loss 0.002848 | elapsed 1.8 min
+  train epoch 18/20 batch 600/1184 | loss 0.002842 | elapsed 2.0 min
+  train epoch 18/20 batch 650/1184 | loss 0.002837 | elapsed 2.2 min
+  train epoch 18/20 batch 700/1184 | loss 0.002830 | elapsed 2.3 min
+  train epoch 18/20 batch 750/1184 | loss 0.002834 | elapsed 2.5 min
+  train epoch 18/20 batch 800/1184 | loss 0.002836 | elapsed 2.7 min
+  train epoch 18/20 batch 850/1184 | loss 0.002843 | elapsed 2.8 min
+  train epoch 18/20 batch 900/1184 | loss 0.002842 | elapsed 3.0 min
+  train epoch 18/20 batch 950/1184 | loss 0.002840 | elapsed 3.2 min
+  train epoch 18/20 batch 1000/1184 | loss 0.002843 | elapsed 3.3 min
+  train epoch 18/20 batch 1050/1184 | loss 0.002839 | elapsed 3.5 min
+  train epoch 18/20 batch 1100/1184 | loss 0.002840 | elapsed 3.7 min
+  train epoch 18/20 batch 1150/1184 | loss 0.002840 | elapsed 3.8 min
+Epoch [18/20] LR: 6.40e-05 | Train Circle Loss: 0.002841 | Val PixelCNN Circle PSNR: 26.05 dB | Val PixelCNN Circle SSIM: 0.9788 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.06 dB @ epoch 17
+  train epoch 19/20 batch 50/1184 | loss 0.002898 | elapsed 0.2 min
+  train epoch 19/20 batch 100/1184 | loss 0.002863 | elapsed 0.3 min
+  train epoch 19/20 batch 150/1184 | loss 0.002872 | elapsed 0.5 min
+  train epoch 19/20 batch 200/1184 | loss 0.002842 | elapsed 0.7 min
+  train epoch 19/20 batch 250/1184 | loss 0.002876 | elapsed 0.8 min
+  train epoch 19/20 batch 300/1184 | loss 0.002876 | elapsed 1.0 min
+  train epoch 19/20 batch 350/1184 | loss 0.002871 | elapsed 1.2 min
+  train epoch 19/20 batch 400/1184 | loss 0.002889 | elapsed 1.3 min
+  train epoch 19/20 batch 450/1184 | loss 0.002874 | elapsed 1.5 min
+  train epoch 19/20 batch 500/1184 | loss 0.002851 | elapsed 1.7 min
+  train epoch 19/20 batch 550/1184 | loss 0.002850 | elapsed 1.8 min
+  train epoch 19/20 batch 600/1184 | loss 0.002845 | elapsed 2.0 min
+  train epoch 19/20 batch 650/1184 | loss 0.002842 | elapsed 2.2 min
+  train epoch 19/20 batch 700/1184 | loss 0.002850 | elapsed 2.3 min
+  train epoch 19/20 batch 750/1184 | loss 0.002852 | elapsed 2.5 min
+  train epoch 19/20 batch 800/1184 | loss 0.002855 | elapsed 2.7 min
+  train epoch 19/20 batch 850/1184 | loss 0.002857 | elapsed 2.8 min
+  train epoch 19/20 batch 900/1184 | loss 0.002856 | elapsed 3.0 min
+  train epoch 19/20 batch 950/1184 | loss 0.002854 | elapsed 3.2 min
+  train epoch 19/20 batch 1000/1184 | loss 0.002852 | elapsed 3.3 min
+  train epoch 19/20 batch 1050/1184 | loss 0.002849 | elapsed 3.5 min
+  train epoch 19/20 batch 1100/1184 | loss 0.002841 | elapsed 3.7 min
+  train epoch 19/20 batch 1150/1184 | loss 0.002843 | elapsed 3.8 min
+Epoch [19/20] LR: 3.42e-05 | Train Circle Loss: 0.002840 | Val PixelCNN Circle PSNR: 26.05 dB | Val PixelCNN Circle SSIM: 0.9789 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.06 dB @ epoch 17
+  train epoch 20/20 batch 50/1184 | loss 0.002849 | elapsed 0.2 min
+  train epoch 20/20 batch 100/1184 | loss 0.002903 | elapsed 0.3 min
+  train epoch 20/20 batch 150/1184 | loss 0.002862 | elapsed 0.5 min
+  train epoch 20/20 batch 200/1184 | loss 0.002873 | elapsed 0.7 min
+  train epoch 20/20 batch 250/1184 | loss 0.002859 | elapsed 0.8 min
+  train epoch 20/20 batch 300/1184 | loss 0.002844 | elapsed 1.0 min
+  train epoch 20/20 batch 350/1184 | loss 0.002858 | elapsed 1.2 min
+  train epoch 20/20 batch 450/1184 | loss 0.002864 | elapsed 1.5 min
+  train epoch 20/20 batch 500/1184 | loss 0.002860 | elapsed 1.7 min
+  train epoch 20/20 batch 550/1184 | loss 0.002851 | elapsed 1.8 min
+  train epoch 20/20 batch 600/1184 | loss 0.002842 | elapsed 2.0 min
+  train epoch 20/20 batch 650/1184 | loss 0.002839 | elapsed 2.2 min
+  train epoch 20/20 batch 700/1184 | loss 0.002842 | elapsed 2.3 min
+  train epoch 20/20 batch 750/1184 | loss 0.002834 | elapsed 2.5 min
+  train epoch 20/20 batch 800/1184 | loss 0.002834 | elapsed 2.7 min
+  train epoch 20/20 batch 850/1184 | loss 0.002838 | elapsed 2.8 min
+  train epoch 20/20 batch 900/1184 | loss 0.002838 | elapsed 3.0 min
+  train epoch 20/20 batch 950/1184 | loss 0.002844 | elapsed 3.2 min
+  train epoch 20/20 batch 1000/1184 | loss 0.002843 | elapsed 3.4 min
+  train epoch 20/20 batch 1050/1184 | loss 0.002843 | elapsed 3.5 min
+  train epoch 20/20 batch 1100/1184 | loss 0.002840 | elapsed 3.7 min
+  train epoch 20/20 batch 1150/1184 | loss 0.002842 | elapsed 3.9 min
+Epoch [20/20] LR: 1.61e-05 | Train Circle Loss: 0.002838 | Val PixelCNN Circle PSNR: 26.05 dB | Val PixelCNN Circle SSIM: 0.9788 
+| Val ACNNP Triangle PSNR: 33.54 dB | Train Batches: 1184 | Val Batches: 64 | Epoch Time: 4.2 min | Best Circle: 26.06 dB @ epoch 17
+Best PixelCNN weights saved to 'pixelcnn_predictor.pth'
+Training complete. Use 'pixelcnn_predictor.pth' for PixelCNN inference.
+(venv) PS C:\Users\ctlab\tomoka> python inference.py
+[ACNNP Circle -> Triangle] PSNR: 35.53 dB | SSIM: 0.9960
+[PixelCNN Circle -> Circle] PSNR: 28.70 dB | SSIM: 0.9813
+Results saved in inference_results\improvement_v1/

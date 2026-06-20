@@ -1,9 +1,11 @@
 import argparse
 import os
+import time
 from math import log10
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torchvision
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
@@ -251,8 +253,144 @@ class PaperBaselinePredictor(nn.Module):
 
 
 # ============================================================
+# PixelCNN: stage 2 replacement, Circle -> Circle self-prediction
+# ============================================================
+class MaskedConv2d(nn.Conv2d):
+    """Causal convolution used by PixelCNN.
+
+    mask_type="A" hides the current pixel and all future pixels.
+    mask_type="B" hides only future pixels and can be used after the first layer.
+    """
+
+    def __init__(self, mask_type, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if mask_type not in {"A", "B"}:
+            raise ValueError("mask_type must be 'A' or 'B'")
+
+        mask = torch.ones_like(self.weight)
+        _, _, kernel_h, kernel_w = mask.shape
+        center_h = kernel_h // 2
+        center_w = kernel_w // 2
+
+        mask[:, :, center_h + 1 :, :] = 0
+        center_offset = 1 if mask_type == "B" else 0
+        mask[:, :, center_h, center_w + center_offset :] = 0
+        self.register_buffer("mask", mask)
+
+    def forward(self, x):
+        masked_weight = self.weight * self.mask
+        return F.conv2d(
+            x,
+            masked_weight,
+            self.bias,
+            self.stride,
+            self.padding,
+            self.dilation,
+            self.groups,
+        )
+
+
+class PixelCNNResidualBlock(nn.Module):
+    """Small residual block that keeps the autoregressive mask in the middle."""
+
+    def __init__(self, channels):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.ReLU(inplace=False),
+            nn.Conv2d(channels, channels, 1),
+            nn.ReLU(inplace=False),
+            MaskedConv2d("B", channels, channels, 3, padding=1),
+            nn.ReLU(inplace=False),
+            nn.Conv2d(channels, channels, 1),
+        )
+
+    def forward(self, x):
+        return x + self.net(x)
+
+
+class PixelCNNPredictor(nn.Module):
+    """Grayscale PixelCNN predictor used as the AMP replacement.
+
+    The model outputs one grayscale channel and is trained with masked_mse_loss
+    on Circle pixels, matching the loss style used for ACNNP.
+    """
+
+    def __init__(self, in_channels=1, hidden_channels=64, num_blocks=5):
+        super().__init__()
+        self.input = nn.Sequential(
+            MaskedConv2d(
+                "A",
+                in_channels,
+                hidden_channels,
+                kernel_size=7,
+                padding=3,
+            ),
+            nn.ReLU(inplace=False),
+        )
+        self.blocks = nn.Sequential(
+            *[PixelCNNResidualBlock(hidden_channels) for _ in range(num_blocks)]
+        )
+        self.output = nn.Sequential(
+            nn.ReLU(inplace=False),
+            nn.Conv2d(hidden_channels, hidden_channels, 1),
+            nn.ReLU(inplace=False),
+            nn.Conv2d(hidden_channels, 1, 1),
+            nn.Sigmoid(),
+        )
+
+    def forward(self, circle_image):
+        x = self.input(circle_image)
+        x = self.blocks(x)
+        return self.output(x)
+
+
+class PaperImprovementPredictor(nn.Module):
+    """ACNNP + PixelCNN improvement model.
+
+    ACNNP keeps predicting Triangle pixels. PixelCNNPredictor replaces AMP and
+    predicts Circle pixels using the same grayscale, mask-aware MSE setup.
+    """
+
+    def __init__(self, acnnp=None, pixelcnn=None):
+        super().__init__()
+        self.acnnp = acnnp if acnnp is not None else ACNNP()
+        self.pixelcnn = pixelcnn if pixelcnn is not None else PixelCNNPredictor()
+
+    def predict_triangle(self, image, circle_mask, triangle_mask):
+        circle_image = image * circle_mask
+        return self.acnnp(circle_image) * triangle_mask
+
+    def predict_circle(self, image, circle_mask):
+        circle_image = image * circle_mask
+        return self.pixelcnn(circle_image) * circle_mask
+
+    def forward(self, image):
+        _, _, height, width = image.shape
+        circle_mask, triangle_mask = generate_circle_triangle_masks(
+            height, width, image.device
+        )
+        pred_triangle = self.predict_triangle(image, circle_mask, triangle_mask)
+        pred_circle = self.predict_circle(image, circle_mask)
+        predicted_full = pred_circle + pred_triangle
+        return {
+            "circle_mask": circle_mask,
+            "triangle_mask": triangle_mask,
+            "pred_triangle": pred_triangle,
+            "pred_circle": pred_circle,
+            "predicted_full": predicted_full,
+        }
+
+
+# ============================================================
 # Training
 # ============================================================
+def load_state_dict_safely(path, device):
+    try:
+        return torch.load(path, map_location=device, weights_only=True)
+    except TypeError:
+        return torch.load(path, map_location=device)
+
+
 def train_model_imagenette(
     root_dir="imagenette2-320",
     device="cuda",
@@ -380,15 +518,202 @@ def train_model_imagenette(
     return model
 
 
+def train_pixelcnn_imagenette(
+    root_dir="imagenette2-320",
+    device="cuda",
+    epochs=20,
+    batch_size=8,
+    lr=1e-3,
+    min_lr=1e-5,
+    weight_decay=1e-3,
+    acnnp_path="baseline_acnnp_amp.pth",
+    output_path="pixelcnn_predictor.pth",
+    hidden_channels=32,
+    num_blocks=3,
+    image_size=512,
+    log_interval=50,
+    max_train_batches=None,
+    max_val_batches=64,
+):
+    transform = transforms.Compose(
+        [
+            transforms.Grayscale(num_output_channels=1),
+            transforms.Resize((image_size, image_size)),
+            transforms.ToTensor(),
+        ]
+    )
+
+    train_dataset = torchvision.datasets.ImageFolder(
+        root=os.path.join(root_dir, "train"),
+        transform=transform,
+    )
+    val_dataset = torchvision.datasets.ImageFolder(
+        root=os.path.join(root_dir, "val"),
+        transform=transform,
+    )
+
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+
+    print(f"Train: {len(train_dataset)} images | Val: {len(val_dataset)} images")
+    output_dir = os.path.dirname(output_path)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+
+    model = PaperImprovementPredictor(
+        pixelcnn=PixelCNNPredictor(
+            hidden_channels=hidden_channels,
+            num_blocks=num_blocks,
+        )
+    ).to(device)
+
+    if acnnp_path and os.path.exists(acnnp_path):
+        model.acnnp.load_state_dict(load_state_dict_safely(acnnp_path, device))
+        print(f"Loaded frozen ACNNP weights from '{acnnp_path}'")
+    elif acnnp_path:
+        print(f"Warning: ACNNP weights not found at '{acnnp_path}'. Using random ACNNP.")
+
+    # The improvement experiment isolates the AMP replacement, so ACNNP is fixed.
+    model.acnnp.eval()
+    for param in model.acnnp.parameters():
+        param.requires_grad = False
+
+    optimizer = torch.optim.Adam(
+        model.pixelcnn.parameters(),
+        lr=lr,
+        weight_decay=weight_decay,
+    )
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+        optimizer,
+        T_max=epochs,
+        eta_min=min_lr,
+    )
+
+    best_val_psnr = float("-inf")
+    best_epoch = 0
+
+    for epoch in range(epochs):
+        model.train()
+        model.acnnp.eval()
+        total_loss = 0.0
+        train_batches = 0
+        epoch_start = time.time()
+
+        for batch_idx, (imgs, _) in enumerate(train_loader, start=1):
+            imgs = imgs.to(device)
+            _, _, height, width = imgs.shape
+            circle_mask, _ = generate_circle_triangle_masks(height, width, device)
+
+            pred_circle = model.predict_circle(imgs, circle_mask)
+            loss = masked_mse_loss(pred_circle, imgs, circle_mask)
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+            total_loss += loss.item()
+            train_batches += 1
+
+            if log_interval and batch_idx % log_interval == 0:
+                elapsed = time.time() - epoch_start
+                avg_loss_so_far = total_loss / train_batches
+                print(
+                    f"  train epoch {epoch + 1}/{epochs} "
+                    f"batch {batch_idx}/{len(train_loader)} | "
+                    f"loss {avg_loss_so_far:.6f} | "
+                    f"elapsed {elapsed / 60:.1f} min",
+                    flush=True,
+                )
+
+            if max_train_batches is not None and batch_idx >= max_train_batches:
+                break
+
+        avg_train_loss = total_loss / train_batches
+
+        model.eval()
+        total_circle_psnr = 0.0
+        total_circle_ssim = 0.0
+        total_triangle_psnr = 0.0
+        val_batches = 0
+
+        with torch.no_grad():
+            for batch_idx, (imgs, _) in enumerate(val_loader, start=1):
+                imgs = imgs.to(device)
+                outputs = model(imgs)
+
+                total_circle_psnr += masked_psnr(
+                    outputs["pred_circle"],
+                    imgs,
+                    outputs["circle_mask"],
+                )
+                total_circle_ssim += masked_ssim(
+                    outputs["pred_circle"],
+                    imgs,
+                    outputs["circle_mask"],
+                )
+                total_triangle_psnr += masked_psnr(
+                    outputs["pred_triangle"],
+                    imgs,
+                    outputs["triangle_mask"],
+                )
+                val_batches += 1
+
+                if max_val_batches is not None and batch_idx >= max_val_batches:
+                    break
+
+        avg_circle_psnr = total_circle_psnr / val_batches
+        avg_circle_ssim = total_circle_ssim / val_batches
+        avg_triangle_psnr = total_triangle_psnr / val_batches
+        current_lr = optimizer.param_groups[0]["lr"]
+        epoch_elapsed = time.time() - epoch_start
+
+        improved = avg_circle_psnr > best_val_psnr
+        if improved:
+            best_val_psnr = avg_circle_psnr
+            best_epoch = epoch + 1
+            torch.save(model.pixelcnn.state_dict(), output_path)
+
+        scheduler.step()
+
+        print(
+            f"Epoch [{epoch + 1}/{epochs}] "
+            f"LR: {current_lr:.2e} | "
+            f"Train Circle Loss: {avg_train_loss:.6f} | "
+            f"Val PixelCNN Circle PSNR: {avg_circle_psnr:.2f} dB | "
+            f"Val PixelCNN Circle SSIM: {avg_circle_ssim:.4f} | "
+            f"Val ACNNP Triangle PSNR: {avg_triangle_psnr:.2f} dB | "
+            f"Train Batches: {train_batches} | Val Batches: {val_batches} | "
+            f"Epoch Time: {epoch_elapsed / 60:.1f} min | "
+            f"Best Circle: {best_val_psnr:.2f} dB @ epoch {best_epoch}"
+            f"{' | saved best' if improved else ''}"
+        )
+
+    print(f"Best PixelCNN weights saved to '{output_path}'")
+    return model
+
+
 def parse_args():
-    parser = argparse.ArgumentParser(description="Train paper baseline ACNNP + AMP.")
+    parser = argparse.ArgumentParser(description="Train ACNNP baseline or PixelCNN improvement.")
+    parser.add_argument(
+        "--mode",
+        choices=("baseline", "pixelcnn"),
+        default="pixelcnn",
+        help="Train the original baseline or the PixelCNN AMP replacement.",
+    )
     parser.add_argument("--root-dir", default="imagenette2-320")
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--min-lr", type=float, default=1e-5)
     parser.add_argument("--weight-decay", type=float, default=1e-3)
-    parser.add_argument("--output", default="baseline_acnnp_amp.pth")
+    parser.add_argument("--output", default=None)
+    parser.add_argument("--acnnp-path", default="baseline_acnnp_amp.pth")
+    parser.add_argument("--pixelcnn-hidden-channels", type=int, default=32)
+    parser.add_argument("--pixelcnn-blocks", type=int, default=3)
+    parser.add_argument("--pixelcnn-image-size", type=int, default=512)
+    parser.add_argument("--log-interval", type=int, default=50)
+    parser.add_argument("--max-train-batches", type=int, default=None)
+    parser.add_argument("--max-val-batches", type=int, default=64)
     parser.add_argument("--device", default=None)
     return parser.parse_args()
 
@@ -400,15 +725,36 @@ if __name__ == "__main__":
     )
     print(f"Using device: {current_device}")
 
-    baseline = train_model_imagenette(
-        root_dir=args.root_dir,
-        device=current_device,
-        epochs=args.epochs,
-        batch_size=args.batch_size,
-        lr=args.lr,
-        min_lr=args.min_lr,
-        weight_decay=args.weight_decay,
-        output_path=args.output,
-    )
-
-    print(f"Training complete. Use '{args.output}' for inference.")
+    if args.mode == "baseline":
+        output_path = args.output or "baseline_acnnp_amp.pth"
+        train_model_imagenette(
+            root_dir=args.root_dir,
+            device=current_device,
+            epochs=args.epochs,
+            batch_size=args.batch_size,
+            lr=args.lr,
+            min_lr=args.min_lr,
+            weight_decay=args.weight_decay,
+            output_path=output_path,
+        )
+        print(f"Training complete. Use '{output_path}' for baseline inference.")
+    else:
+        output_path = args.output or "pixelcnn_predictor.pth"
+        train_pixelcnn_imagenette(
+            root_dir=args.root_dir,
+            device=current_device,
+            epochs=args.epochs,
+            batch_size=args.batch_size,
+            lr=args.lr,
+            min_lr=args.min_lr,
+            weight_decay=args.weight_decay,
+            acnnp_path=args.acnnp_path,
+            output_path=output_path,
+            hidden_channels=args.pixelcnn_hidden_channels,
+            num_blocks=args.pixelcnn_blocks,
+            image_size=args.pixelcnn_image_size,
+            log_interval=args.log_interval,
+            max_train_batches=args.max_train_batches,
+            max_val_batches=args.max_val_batches,
+        )
+        print(f"Training complete. Use '{output_path}' for PixelCNN inference.")
